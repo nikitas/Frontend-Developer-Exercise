@@ -1,3 +1,12 @@
+/**********************************************************************
+ Stream for validating built CSS files
+
+ Author: Branislav Maksin, bane@maksin.net
+ Date: 22.3.2016
+ Copyright: The MIT License (MIT). Copyright (c) 2016 Branislav Maksin
+ Version: 1.0.0
+ ***********************************************************************/
+
 /**
  * Anonymous function
  *
@@ -22,8 +31,7 @@
                 error;
 
             return gulp.src([
-                paths.assets + 'css/*.css',
-                '!' + paths.assets + 'css/*.min.css'
+                paths.assets + 'css/*.css'
             ]).pipe(plugins.w3cCss({
                     sleep: 3000
                 }))

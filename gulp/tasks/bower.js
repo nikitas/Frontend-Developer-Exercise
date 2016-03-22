@@ -1,3 +1,12 @@
+/**********************************************************************
+ Stream for Bower packages include
+
+ Author: Branislav Maksin, bane@maksin.net
+ Date: 22.3.2016
+ Copyright: The MIT License (MIT). Copyright (c) 2016 Branislav Maksin
+ Version: 1.0.0
+ ***********************************************************************/
+
 /**
  * Anonymous function
  *
@@ -17,25 +26,14 @@
     m.exports = function (gulp, plugins, paths) {
         return function () {
             return gulp.src([
-                paths.templates + 'head/tpl_head-css.php',
-                paths.templates + 'js/tpl_js-include.php',
+                paths.src + '*.html',
                 paths.assets + 'css/sass/main.scss'
             ]).pipe(plugins.wiredep({
-                    ignorePath: '../../../../../',
                     exclude: [
-                        /reset.scss/,
-                        /jquery.jscrollpane.min.js/,
-                        /jScrollPane\/script\/jquery.mousewheel.js/,
-                        /html5shiv.js/
-                    ],
-                    fileTypes: {
-                        html: {
-                            replace: {
-                                js: '<script src="<?php echo $cms_conf->url->static; ?>{{filePath}}"></script>',
-                                css: '<link rel="stylesheet" href="<?php echo $cms_conf->url->static; ?>{{filePath}}" />'
-                            }
-                        }
-                    }
+                        /what-input/,
+                        /foundation.js/,
+                        /angular-mocks/
+                    ]
                 }))
                 .pipe(plugins.util.buffer(function (err, files) {
                     for (var i in files) {

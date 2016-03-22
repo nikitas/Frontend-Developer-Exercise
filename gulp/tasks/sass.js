@@ -1,3 +1,12 @@
+/**********************************************************************
+ Stream for SASS build
+
+ Author: Branislav Maksin, bane@maksin.net
+ Date: 22.3.2016
+ Copyright: The MIT License (MIT). Copyright (c) 2016 Branislav Maksin
+ Version: 1.0.0
+ ***********************************************************************/
+
 /**
  * Anonymous function
  *

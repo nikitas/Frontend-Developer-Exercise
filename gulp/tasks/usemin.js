@@ -1,3 +1,12 @@
+/**********************************************************************
+ Stream for unifying and minifying JS and CSS
+
+ Author: Branislav Maksin, bane@maksin.net
+ Date: 22.3.2016
+ Copyright: The MIT License (MIT). Copyright (c) 2016 Branislav Maksin
+ Version: 1.0.0
+ ***********************************************************************/
+
 /**
  * Anonymous function
  *
@@ -17,40 +26,26 @@
     m.exports = function (gulp, plugins, paths) {
         return function () {
             return gulp.src([
-                paths.templates + 'head/tpl_head-css.php',
-                paths.templates + 'js/tpl_js-include.php'
-            ]).pipe(plugins.replace('<?php echo $cms_conf->url->static; ?>', '../../../../../'))
-                .pipe(plugins.usemin({
+                paths.src + '*.html',
+                '!' + paths.src + 'iconfont.html'
+            ]).pipe(plugins.usemin({
                     jsAttributes: {
                         async: true
                     },
                     css: [plugins.cssnano, plugins.rev],
+                    html: [ function () {return plugins.htmlMinifier({
+                        collapseWhitespace: true,
+                        removeComments: true
+                    });} ],
                     js: [plugins.uglify, plugins.rev]
                 }))
-                .pipe(plugins.replace('href="', 'href="<?php echo $cms_conf->url->static; ?>'))
-                .pipe(plugins.replace('src="', 'src="<?php echo $cms_conf->url->static; ?>'))
                 .pipe(plugins.rename(function (path) {
-                    path.basename += '.min';
-
-                    // Check for file extension and change destination directory
-                    switch (path.extname) {
-                        case '.css':
-                            path.dirname = 'assets/css';
-                            break;
-                        case '.js':
-                            path.dirname = 'assets/js';
-                            break;
-                        case '.php':
-                            if (path.basename.indexOf('css') !== -1) {
-                                path.dirname = 'cms/template/includes/blocks/head/';
-                            } else {
-                                path.dirname = 'cms/template/includes/blocks/js/';
-                            }
-                            break;
+                    if (path.extname !== '.html') {
+                        path.basename += '.min';
                     }
                 }))
                 .pipe(gulp.dest(
-                    paths.base
+                    paths.dist
                 ));
         };
     };
