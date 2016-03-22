@@ -1,0 +1,34 @@
+{
+  "name": "Gecko",
+  "version": "1.0.0",
+  "authors": [
+    "Branislav Maksin <bane@maksin.net>"
+  ],
+  "description": "Frontend Developer Exercise",
+  "main": "",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "The MIT License (MIT). Copyright (c) 2016 Branislav Maksin",
+  "homepage": "https://github.com/Bane-Maksin/Frontend-Developer-Exercise.git",
+  "private": true,
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "keywords": [
+    "Gecko",
+    "Frontend",
+    "Angular",
+    "Exercise"
+  ],
+  "devDependencies": {},
+  "dependencies": {
+    "bourbon": "~4.2.6",
+    "fastclick": "~1.0.6",
+    "foundation-sites": "^6.2.0"
+  },
+  "overrides": {}
+}
