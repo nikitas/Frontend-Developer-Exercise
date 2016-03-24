@@ -2,4 +2,6 @@
 /.idea
 /bower_components
 /node_modules
+/src/assets/img/sprite.png
+/src/assets/img/sprite@2x.png
 /npm-debug.log

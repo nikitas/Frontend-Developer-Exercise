@@ -1,0 +1,17 @@
+<section class="gecko-home">
+    <img class="thumbnail" src="assets/img/demo/mclaren_mp2-24_2009f1car.jpg" alt="Mclaren F1 car" />
+
+    <h4>Welcome to the Ergast F1 world champions developer API</h4>
+
+    <p>Please select the season year below in order to see the winners of each race and world champion for that year.</p>
+
+    <div class="callout">
+        <ul class="menu simple gecko-bottom-menu">
+            <li data-ng-repeat="n in range(2005, 2015)">
+                <a href="drivers/{{n}}" class="large button">
+                    {{n}}
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>

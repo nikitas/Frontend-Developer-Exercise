@@ -1,0 +1,62 @@
+<section data-ng-if="f1Data" class="gecko-drivers">
+    <h2>Drivers standings for {{ f1Data.year }}</h2>
+
+    <h5 data-ng-if="error" class="callout alert">
+        Error: {{error}}
+    </h5>
+
+    <p>
+        * World champion in season {{ f1Data.year }} is highlighted
+    </p>
+
+    <table class="hover stack">
+        <thead>
+            <tr>
+                <th>Race name</th>
+                <th>Driver name</th>
+                <th>Constructor</th>
+                <th>Laps count</th>
+                <th>Finish time</th>
+                <th>World champion</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr data-ng-repeat="(key, value) in f1Data.prepared"
+                class="gecko-world-champion-{{ value.isSeassinChampion | lowercase}}">
+                <td>
+                    <a href="{{ value.raceURL }}" target="_blank">
+                        {{ value.raceName }}
+                    </a>
+                </td>
+                <td>
+                    {{ value.driverName }} {{ value.driverSurname }}
+                </td>
+                <td>
+                    <a href="{{ value.constructorURL }}" target="_blank">
+                        {{ value.constructorName }}
+                    </a>
+                </td>
+                <td>
+                    {{ value.lapsCount }}
+                </td>
+                <td>
+                    {{ value.finishTime }}
+                </td>
+                <td>
+                    {{ value.isSeassinChampion }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="callout">
+        <ul class="menu simple gecko-bottom-menu">
+            <li>
+                <a href="home" class="large button">
+                    Home
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
