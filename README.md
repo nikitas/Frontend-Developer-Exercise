@@ -1,34 +1,30 @@
 # Frontend Developer Exercise 2.7
 
-## Introduction
+## Description
 
-The purpose of this exercise is for the developer to exhibit his familiarity with frontend technologies, programming patterns and to provide with a sample of what clean and reusable code means to the candidate.
+For the purpose of this exercise, I have used Gulp modules as tasks runner and bower module for external dependency package management.
 
-Please put your comment about the decisions you have made inline, and give a summary about the architectural choices that you considered. Please don’t use ES6.
+The main purpose of Gulp tasks is to provide automation of every aspect regarding static resources. Bower packages, custom files and so on are automatically included and maintained into the desired placeholders.
 
-## Exercise
-We will use http://ergast.com/mrd/ to create a single page application that presents a list that shows the F1 world champions starting from 2005 until 2015.  Clicking on an item shows the list of the winners for every race for the selected year. We also request to highlight the row when the winner has been the world champion in the same season.
+## Logic
+Since Ergast is a public API, the small caching mechanism has been implemented to store retrieved JSON data into the browser local storage. The logic is simply checking is there a valid data in the cache that can be used. If not, the 2 HTTP requests will be made to restart the cache process.
 
-You can adjust the UI how you see fit for the best result, but sticking to a single page application is mandatory.
+## W3C and JS validation
+During the build process (and also when the watch task is active) newly created files are checked against JSHint configuration and both CSSs and HTMLs files (with support for Angular templates) are validated against W3C online service.
 
-## Ergast Developer API 
-You can find all information necessary to complete the exercise consulting the following website: http://ergast.com/mrd/
+## Graphic elements
+Every graphic elements are automatically created for later include into the project build.
+
+	- Font icons are automatically created with preview directly from SVG files, and SASS mixins support and with new wof2 web font format
+	- CSS sprites are also automatically created with full retina and SASS mixins support
+
+## Optimization
+Every resources in distribution folder are optimized for maximum performance. All project JS files are included into one, minified and timestamped using RequireJS r.js library for it. The same apply for CSS files. Also all the HTML files are fully minified.
+
+ As for the graphic elements, they are progressively optimized before delivery to distribution folder.
 
 ## UI/UX
-We take pride that we create a lean solutions, with focus on UX. Your UI should reflect the same principles. Try creating something simple, user friendly and eye appealing. Feel free to use any UI resources you’d like to achieve that. For example you could use Twitter Bootstrap, or any other UI library.
+For the visual part, the Foundation framework has been used. Around 99% of styles are what Foundation is providing out of the box.
 
-## Architecture
-There is no limitation, design your application anyway you want. Focus on clean, reusable code. Focus on frontend best practices. Show us that you know how to produce high quality modern web applications.
-
-## Libraries
-You can use any libraries you think are best but we would love to see your skills with AngularJS.
-
-## Backend
-No Backend required. We should be able to run the exercise, just by opening your index.html file.
-
-## Extra points
-Delivery the exercise with a readme file that explains what you have done.
-
-	- Use less as CSS pre-processor
-	- Use RequireJS as module loader
-	- Use grunt to minify and concatenate static resources
+## Unit tests
+Currently only one example test has been written, but soon we should have full test coverage for all methods using Karma, Jasmine and PhantomJS environment.

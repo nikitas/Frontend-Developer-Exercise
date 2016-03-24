@@ -39,7 +39,6 @@
     // Load plugins that were skipped during auto load
     plugins.fs = require('fs');
     plugins.wiredep = require('wiredep').stream;
-    plugins.series = require('stream-series');
     plugins.runSequence = require('run-sequence');
     plugins.Server = require('karma').Server;
     plugins.rjs = require('requirejs');
