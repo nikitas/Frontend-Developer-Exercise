@@ -17,6 +17,6 @@
         font-weight: bold;
         box-shadow: 0 0 5px $medium-gray;
         border: 1px solid $dark-gray;
-        transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+        @include transition(box-shadow 0.5s, border-color 0.25s ease-in-out);
     }
 }
