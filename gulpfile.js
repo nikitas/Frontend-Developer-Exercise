@@ -16,11 +16,14 @@
     // Vars
     var gulp = require('gulp'),
         plugins = require('gulp-load-plugins')(),
-        paths = {
-            base: __dirname + '/',
-            src: 'src/',
-            assets: 'src/assets/',
-            dist: 'dist/'
+        config = {
+            timestamp: new Date().getTime(),
+            paths: {
+                base: __dirname + '/',
+                src: 'src/',
+                assets: 'src/assets/',
+                dist: 'dist/'
+            }
         };
 
     /**
@@ -30,7 +33,7 @@
      * @returns {Function} Node require module function
      */
     function getTask(task) {
-        return require(__dirname + '/gulp/tasks/' + task)(gulp, plugins, paths);
+        return require(__dirname + '/gulp/tasks/' + task)(gulp, plugins, config);
     }
 
     // Load plugins that were skipped during auto load
@@ -39,20 +42,22 @@
     plugins.series = require('stream-series');
     plugins.runSequence = require('run-sequence');
     plugins.Server = require('karma').Server;
+    plugins.rjs = require('requirejs');
 
     // Load tasks
     gulp.task('jshint', getTask('jshint'));
+    gulp.task('tests', getTask('tests'));
     gulp.task('clean', ['jshint', 'tests'], getTask('clean'));
     gulp.task('sprite', getTask('sprite'));
     gulp.task('icons', getTask('icon-fonts'));
-    gulp.task('sass', ['sprite', 'icons', 'bower'], getTask('sass'));
-    gulp.task('validateCSS', ['sass'], getTask('validate-css'));
     gulp.task('bower', getTask('bower'));
-    gulp.task('inject', getTask('inject'));
-    gulp.task('usemin', ['inject'], getTask('usemin'));
-    gulp.task('validateHTML', ['usemin'], getTask('validate-html'));
+    gulp.task('inject', ['bower'], getTask('inject'));
+    gulp.task('sass', ['sprite', 'icons', 'inject'], getTask('sass'));
+    gulp.task('validateCSS', ['sass'], getTask('validate-css'));
+    gulp.task('usemin', getTask('usemin'));
+    gulp.task('requireOptimize', ['usemin'], getTask('requirejs-optimize'));
+    gulp.task('validateHTML', ['requireOptimize'], getTask('validate-html'));
     gulp.task('images', getTask('images'));
-    gulp.task('tests', getTask('tests'));
     gulp.task('watch', getTask('watch'));
     gulp.task('dev', ['build', 'watch']);
 

@@ -1,0 +1,17 @@
+/**********************************************************************
+ Main footer styles
+
+ Author: Branislav Maksin, bane@maksin.net
+ Date: 22.3.2016
+ Copyright: The MIT License (MIT). Copyright (c) 2016 Branislav Maksin
+ Version: 1.0.0
+***********************************************************************/
+
+body > footer:first-of-type {
+    font-size: 100px;
+    margin: 10px auto 26px;
+
+    &:before {
+        margin: 0 auto;
+    }
+}

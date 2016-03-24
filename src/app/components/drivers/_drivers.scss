@@ -1,0 +1,21 @@
+/**********************************************************************
+ Styles for drivers page
+
+ Author: Branislav Maksin, bane@maksin.net
+ Date: 22.3.2016
+ Copyright: The MIT License (MIT). Copyright (c) 2016 Branislav Maksin
+ Version: 1.0.0
+***********************************************************************/
+
+.gecko-drivers {
+    @include sprite-image($sprite-formula-1-helmet);
+    background-position: right top;
+    background-repeat: no-repeat;
+
+    // Highlighted world champion
+    .gecko-world-champion-yes {
+        box-shadow: 0 0 5px $medium-gray;
+        border: 1px solid $dark-gray;
+        transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+    }
+}

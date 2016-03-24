@@ -20,14 +20,14 @@
      *
      * @param gulp {Object} Main Gulp object
      * @param plugins {Object} All installed plugins
-     * @param paths {Object} Project paths
+     * @param config {Object} Task parameters
      * @returns {Function} Gulp stream
      */
-    m.exports = function (gulp, plugins, paths) {
+    m.exports = function (gulp, plugins, config) {
         return function () {
             var spriteData = gulp.src([
-                paths.assets + 'img/sprite/**/*.png',
-                paths.assets + 'img/sprite/**/*.jpg'
+                config.paths.assets + 'img/sprite/**/*.png',
+                config.paths.assets + 'img/sprite/**/*.jpg'
             ]).pipe(plugins.spritesmith({
                 imgName: 'sprite.png',
                 cssName: '_sprite.scss',
@@ -36,14 +36,14 @@
                     sprite.name = 'sprite-' + sprite.name;
                 },
                 retinaSrcFilter: [
-                    paths.assets + 'img/sprite/**/*@2x.png',
-                    paths.assets + 'img/sprite/**/*@2x.jpg'
+                    config.paths.assets + 'img/sprite/**/*@2x.png',
+                    config.paths.assets + 'img/sprite/**/*@2x.jpg'
                 ],
                 retinaImgName: 'sprite@2x.png'
             }));
 
-            spriteData.css.pipe(gulp.dest(paths.assets + 'css/sass/base/'));
-            return spriteData.img.pipe(gulp.dest(paths.assets + 'img'));
+            spriteData.css.pipe(gulp.dest(config.paths.assets + 'css/sass/base/'));
+            return spriteData.img.pipe(gulp.dest(config.paths.assets + 'img'));
         };
     };
 })(module);

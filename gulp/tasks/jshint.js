@@ -20,16 +20,16 @@
      *
      * @param gulp {Object} Main Gulp object
      * @param plugins {Object} All installed plugins
-     * @param paths {Object} Project paths
+     * @param config {Object} Task parameters
      * @returns {Function} Gulp stream
      */
-    m.exports = function (gulp, plugins, paths) {
+    m.exports = function (gulp, plugins, config) {
         return function () {
             return gulp.src([
                 'gulpfile.js',
                 'gulp/*.js',
-                paths.src + '**/*.js',
-                '!' + paths.assets + 'js/vendors/**/*.js'
+                config.paths.src + '**/*.js',
+                '!' + config.paths.assets + 'js/vendors/**/*.js'
             ]).pipe(plugins.jshint())
                 .pipe(plugins.jshint.reporter('jshint-stylish'))
                 .pipe(plugins.jshint.reporter('fail'));

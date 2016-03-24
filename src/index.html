@@ -17,12 +17,13 @@
         <title>Frontend Developer Exercise</title>
 
         <!-- Favicon -->
-        <link rel="icon" href="assets/img/favicon/formula.ico" />
-        <link rel="apple-touch-icon" href="assets/img/favicon/formula.png" />
+        <link rel="icon" href="assets/img/favicon/favicon.ico" />
+        <link rel="apple-touch-icon" href="assets/img/favicon/favicon.png" />
 
         <!-- build:css assets/css/main.css -->
 
         <!-- bower:css -->
+        <link rel="stylesheet" href="../bower_components/foundation-sites/dist/foundation.css" />
         <!-- endbower -->
 
         <!-- inject:css -->
@@ -33,18 +34,30 @@
     </head>
     <body>
 
+    <header class="callout large primary">
+        <div class="row column text-center">
+            <h1>Frontend Developer Exercise 2.7</h1>
+            <h2 class="subheader">
+                F1 world champions
+            </h2>
+        </div>
+    </header>
+
+    <main class="row medium-8 large-7 columns">
+        <div class="blog-post">
+            <div data-ng-view></div>
+        </div>
+    </main>
+
+    <footer class="row medium-8 large-7 columns gecko-icon-f1-logo"></footer>
+
     <!-- build:js assets/js/main.js -->
 
     <!-- bower:js -->
-    <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-    <script src="../bower_components/requirejs/require.js"></script>
-    <script src="../bower_components/jquery/dist/jquery.js"></script>
-    <script src="../bower_components/angular/angular.js"></script>
-    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/requirejs/require.js" data-main="assets/js/main.js"></script>
     <!-- endbower -->
 
     <!-- inject:js -->
-    <script src="assets/js/main.js"></script>
     <!-- endinject -->
 
     <!-- endbuild -->

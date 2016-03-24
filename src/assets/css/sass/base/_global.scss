@@ -1,0 +1,19 @@
+/**********************************************************************
+ Global styles
+
+ Author: Branislav Maksin, bane@maksin.net
+ Date: 22.3.2016
+ Copyright: The MIT License (MIT). Copyright (c) 2016 Branislav Maksin
+ Version: 1.0.0
+***********************************************************************/
+
+// Main background image
+body {
+    background: $white url($imagesPath + 'demo/447756.jpg') no-repeat center fixed;
+    opacity: 0.85;
+}
+
+// Over ride some of the Foundation default styles
+.gecko-bottom-menu.menu.simple a {
+    padding: 0.7rem 1rem;
+}

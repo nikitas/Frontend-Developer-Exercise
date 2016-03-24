@@ -20,32 +20,41 @@
      *
      * @param gulp {Object} Main Gulp object
      * @param plugins {Object} All installed plugins
-     * @param paths {Object} Project paths
+     * @param config {Object} Task parameters
      * @returns {Function} Gulp stream
      */
-    m.exports = function (gulp, plugins, paths) {
+    m.exports = function (gulp, plugins, config) {
         return function () {
             return gulp.src([
-                paths.src + '*.html',
-                '!' + paths.src + 'iconfont.html'
+                config.paths.src + '*.html',
+                config.paths.src + 'app/**/*.html',
+                '!' + config.paths.src + 'iconfont.html'
             ]).pipe(plugins.usemin({
                     jsAttributes: {
                         async: true
                     },
-                    css: [plugins.cssnano, plugins.rev],
+                    css: [plugins.cssnano],
                     html: [ function () {return plugins.htmlMinifier({
                         collapseWhitespace: true,
                         removeComments: true
                     });} ],
-                    js: [plugins.uglify, plugins.rev]
+                    js: []
                 }))
                 .pipe(plugins.rename(function (path) {
+
+                    // Check if these are Angular templates
+                    if (path.dirname.indexOf('components') !== -1 || path.dirname.indexOf('shared') !== -1) {
+                        path.dirname = 'app/' + path.dirname;
+                    }
+
+                    // Also append timestamp to static unified elements
                     if (path.extname !== '.html') {
-                        path.basename += '.min';
+                        path.basename += '-' + config.timestamp + '.min';
                     }
                 }))
+                .pipe(plugins.ignore.exclude('*.min.js'))
                 .pipe(gulp.dest(
-                    paths.dist
+                    config.paths.dist
                 ));
         };
     };

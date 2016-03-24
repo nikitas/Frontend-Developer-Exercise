@@ -20,17 +20,17 @@
      *
      * @param gulp {Object} Main Gulp object
      * @param plugins {Object} All installed plugins
-     * @param paths {Object} Project paths
+     * @param config {Object} Task parameters
      * @returns {Function} Gulp stream
      */
-    m.exports = function (gulp, plugins, paths) {
+    m.exports = function (gulp, plugins, config) {
         return function () {
-            gulp.watch(paths.assets + 'css/sass/**/*.scss', ['validateCSS']);
+            gulp.watch(config.paths.assets + 'css/sass/**/*.scss', ['validateCSS']);
             gulp.watch([
                 'gulpfile.js',
                 'gulp/*.js',
-                paths.src + '**/*.js',
-                '!' + paths.assets + 'js/vendors/**/*.js'
+                config.paths.src + '**/*.js',
+                '!' + config.paths.assets + 'js/vendors/**/*.js'
             ], ['jshint']);
         };
     };

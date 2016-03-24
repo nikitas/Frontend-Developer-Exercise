@@ -20,19 +20,38 @@
      *
      * @param gulp {Object} Main Gulp object
      * @param plugins {Object} All installed plugins
-     * @param paths {Object} Project paths
+     * @param config {Object} Task parameters
      * @returns {Function} Gulp stream
      */
-    m.exports = function (gulp, plugins, paths) {
+    m.exports = function (gulp, plugins, config) {
         return function () {
-            plugins.fs.writeFileSync(paths.src + 'assets/css/sass/base/_sprite.scss', '');
-            plugins.fs.writeFileSync(paths.src + 'assets/css/sass/base/_iconfont.scss', '');
+
+            // For some reason inject module isn't cleaning injected files for SASS/SCSS files
+            // So we need to do it manually
+            plugins.fs.readFile(config.paths.src + 'assets/css/sass/main.scss', 'utf-8', function(err, _data) {
+                plugins.fs.writeFileSync(
+                    config.paths.src + 'assets/css/sass/main.scss',
+                    _data.replace(
+                        _data.substring(
+                            _data.indexOf('/* inject:scss */') + 17,
+                            _data.indexOf('/* endinject */')
+                        ),
+                        '\n'
+                    )
+                );
+            });
+
+            // Reset auto generated files
+            plugins.fs.writeFileSync(config.paths.src + 'assets/css/sass/base/_sprite.scss', '');
+            plugins.fs.writeFileSync(config.paths.src + 'assets/css/sass/base/_iconfont.scss', '');
+
+            // Clean
             return gulp.src([
-                paths.assets + 'img/sprite.png',
-                paths.assets + 'img/sprite@2x.png',
-                paths.assets + 'fonts/*',
-                paths.src + 'iconfont.html',
-                paths.dist + '*'
+                config.paths.assets + 'img/sprite.png',
+                config.paths.assets + 'img/sprite@2x.png',
+                config.paths.assets + 'fonts/*',
+                config.paths.src + 'iconfont.html',
+                config.paths.dist + '*'
             ], {
                 read: false
             }).pipe(plugins.clean({

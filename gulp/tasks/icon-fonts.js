@@ -20,20 +20,20 @@
      *
      * @param gulp {Object} Main Gulp object
      * @param plugins {Object} All installed plugins
-     * @param paths {Object} Project paths
+     * @param config {Object} Task parameters
      * @returns {Function} Gulp stream
      */
-    m.exports = function (gulp, plugins, paths) {
+    m.exports = function (gulp, plugins, config) {
         return function () {
             var templateOptions;
 
             // Please pay attention to manually increment unicode prefix!
-            return gulp.src([paths.assets + 'icons/*.svg'])
+            return gulp.src([config.paths.assets + 'icons/*.svg'])
                 .pipe(plugins.iconfont({
                     fontName: 'gecko-icons',
                     prependUnicode: true,
                     formats: ['woff2', 'woff', 'ttf', 'svg'],
-                    timestamp: new Date().getTime(),
+                    timestamp: config.timestamp,
                     normalize: true
                 }))
                 .on('glyphs', function (glyphs, options) {
@@ -46,17 +46,17 @@
                     };
 
                     // Insert glyphs into SASS template
-                    gulp.src(paths.assets + 'templates/_iconfont.scss')
+                    gulp.src(config.paths.assets + 'templates/_iconfont.scss')
                         .pipe(plugins.consolidate('lodash', templateOptions))
-                        .pipe(gulp.dest(paths.assets + 'css/sass/base/'));
+                        .pipe(gulp.dest(config.paths.assets + 'css/sass/base/'));
 
                     // Insert glyphs into HTML template
-                    gulp.src(paths.assets + 'templates/iconfont.html')
+                    gulp.src(config.paths.assets + 'templates/iconfont.html')
                         .pipe(plugins.consolidate('lodash', templateOptions))
-                        .pipe(gulp.dest(paths.src));
+                        .pipe(gulp.dest(config.paths.src));
 
-                }).pipe(gulp.dest(paths.assets + 'fonts/gecko-icons/'))
-                .pipe(gulp.dest(paths.dist + 'fonts/gecko-icons/'));
+                }).pipe(gulp.dest(config.paths.assets + 'fonts/gecko-icons/'))
+                .pipe(gulp.dest(config.paths.dist + 'assets/fonts/gecko-icons/'));
         };
     };
 })(module);

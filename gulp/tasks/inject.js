@@ -20,25 +20,32 @@
      *
      * @param gulp {Object} Main Gulp object
      * @param plugins {Object} All installed plugins
-     * @param paths {Object} Project paths
+     * @param config {Object} Task parameters
      * @returns {Function} Gulp stream
      */
-    m.exports = function (gulp, plugins, paths) {
+    m.exports = function (gulp, plugins, config) {
         return function () {
 
             // Start injecting CSS and JS files
             return gulp.src([
-                paths.src + '*.html',
-                '!' + paths.src + 'iconfont.html'
+                config.paths.src + '*.html',
+                '!' + config.paths.src + 'iconfont.html',
+                config.paths.assets + 'css/sass/main.scss'
             ]).pipe(plugins.inject(
                 gulp.src([
-                    paths.assets + 'css/*.css',
-                    paths.assets + 'js/*.js'
+                    config.paths.assets + 'css/*.css',
+                    config.paths.src + 'app/**/*.scss'
                 ], {read: false}),
                 {
                     relative: true
                 }
-            )).pipe(gulp.dest(paths.src));
+            )).pipe(plugins.util.buffer(function (err, files) {
+                for (var i in files) {
+                    if (files.hasOwnProperty(i)) {
+                        plugins.fs.writeFileSync(files[i].history.toString(), files[i].contents.toString());
+                    }
+                }
+            }));
         };
     };
 })(module);

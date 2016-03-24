@@ -20,10 +20,10 @@
      *
      * @param gulp {Object} Main Gulp object
      * @param plugins {Object} All installed plugins
-     * @param paths {Object} Project paths
+     * @param config {Object} Task parameters
      * @returns {Function} Gulp stream
      */
-    m.exports = function (gulp, plugins, paths) {
+    m.exports = function (gulp, plugins, config) {
         return function () {
             var fileName,
                 fileContent,
@@ -31,7 +31,7 @@
                 error;
 
             return gulp.src([
-                paths.assets + 'css/*.css'
+                config.paths.assets + 'css/*.css'
             ]).pipe(plugins.w3cCss({
                     sleep: 3000
                 }))

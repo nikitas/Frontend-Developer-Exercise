@@ -20,13 +20,13 @@
      *
      * @param gulp {Object} Main Gulp object
      * @param plugins {Object} All installed plugins
-     * @param paths {Object} Project paths
+     * @param config {Object} Task parameters
      * @returns {Function} Gulp stream
      */
-    m.exports = function (gulp, plugins, paths) {
+    m.exports = function (gulp, plugins, config) {
         return function (done) {
             new plugins.Server({
-                configFile: paths.base + 'karma.conf.js'
+                configFile: config.paths.base + 'karma.conf.js'
             }, done).start();
         };
     };

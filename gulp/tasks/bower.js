@@ -20,16 +20,17 @@
      *
      * @param gulp {Object} Main Gulp object
      * @param plugins {Object} All installed plugins
-     * @param paths {Object} Project paths
+     * @param config {Object} Task parameters
      * @returns {Function} Gulp stream
      */
-    m.exports = function (gulp, plugins, paths) {
+    m.exports = function (gulp, plugins, config) {
         return function () {
             return gulp.src([
-                paths.src + '*.html',
-                paths.assets + 'css/sass/main.scss'
+                config.paths.src + '*.html',
+                config.paths.assets + 'css/sass/main.scss'
             ]).pipe(plugins.wiredep({
                     exclude: [
+                        /jquery/,
                         /what-input/,
                         /foundation.js/,
                         /angular-mocks/
@@ -38,7 +39,8 @@
                 .pipe(plugins.util.buffer(function (err, files) {
                     for (var i in files) {
                         if (files.hasOwnProperty(i)) {
-                            plugins.fs.writeFileSync(files[i].history.toString(), files[i].contents.toString());
+                            plugins.fs.writeFileSync(files[i].history.toString(), files[i].contents.toString()
+                                .replace('require.js"', 'require.js" data-main="assets/js/main.js"'));
                         }
                     }
                 }));

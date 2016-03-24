@@ -20,15 +20,15 @@
      *
      * @param gulp {Object} Main Gulp object
      * @param plugins {Object} All installed plugins
-     * @param paths {Object} Project paths
+     * @param config {Object} Task parameters
      * @returns {Function} Gulp stream
      */
-    m.exports = function (gulp, plugins, paths) {
+    m.exports = function (gulp, plugins, config) {
         return function () {
             return gulp.src([
-                paths.src + '*.html',
-                paths.dist + '*.html',
-                '!' + paths.src + 'iconfont.html'
+                config.paths.src + '*.html',
+                config.paths.dist + '*.html',
+                '!' + config.paths.src + 'iconfont.html'
             ]).pipe(plugins.htmlAngularValidate({
                 angular: false,
                 reportpath: null,

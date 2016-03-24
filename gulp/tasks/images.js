@@ -20,19 +20,19 @@
      *
      * @param gulp {Object} Main Gulp object
      * @param plugins {Object} All installed plugins
-     * @param paths {Object} Project paths
+     * @param config {Object} Task parameters
      * @returns {Function} Gulp stream
      */
-    m.exports = function (gulp, plugins, paths) {
+    m.exports = function (gulp, plugins, config) {
         return function () {
             return gulp.src([
-                paths.assets + 'img/**/*.*',
-                '!' + paths.assets + 'img/sprite/*'
+                config.paths.assets + 'img/**/*.*',
+                '!' + config.paths.assets + 'img/sprite/*'
             ])
                 .pipe(plugins.imagemin({
                     optimizationLevel: 5
                 }))
-                .pipe(gulp.dest(paths.dist + 'assets/img'));
+                .pipe(gulp.dest(config.paths.dist + 'assets/img'));
         };
     };
 })(module);
