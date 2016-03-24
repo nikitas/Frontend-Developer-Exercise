@@ -1,5 +1,5 @@
 /**********************************************************************
- Styles for drivers page
+ Styles for home page
 
  Author: Branislav Maksin, bane@maksin.net
  Date: 22.3.2016
@@ -7,13 +7,16 @@
  Version: 1.0.0
 ***********************************************************************/
 
-.gecko-drivers {
+.gecko-home {
+    padding-top: 22rem;
 
-    // Highlighted world champion
-    .gecko-world-champion-yes {
-        font-weight: bold;
-        box-shadow: 0 0 5px $medium-gray;
-        border: 1px solid $dark-gray;
-        @include transition(box-shadow 0.5s, border-color 0.25s ease-in-out);
+    &:before {
+        content: "\EA02";
+        font-family: 'gecko-icons';
+        font-size: 30rem;
+        line-height: 30rem;
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 }

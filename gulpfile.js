@@ -46,7 +46,7 @@
     // Load tasks
     gulp.task('jshint', getTask('jshint'));
     gulp.task('tests', getTask('tests'));
-    gulp.task('clean', ['jshint', 'tests'], getTask('clean'));
+    gulp.task('clean', ['jshint'], getTask('clean'));
     gulp.task('sprite', getTask('sprite'));
     gulp.task('icons', getTask('icon-fonts'));
     gulp.task('bower', getTask('bower'));

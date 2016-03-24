@@ -17,17 +17,13 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'bower_components/angular/angular.js',
-            'bower_components/angular-mocks/angular-mocks.js',
-            'src/app/shared/header.js',
+            'bower_components/requirejs/require.js',
             'src/tests/**/*.js'
         ],
 
 
         // list of files to exclude
-        exclude: [
-            'src/app/*.js'
-        ],
+        exclude: [],
 
 
         // preprocess matching files before serving them to the browser
