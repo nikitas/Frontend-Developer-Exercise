@@ -26,20 +26,27 @@
     m.exports = function (gulp, plugins, config) {
         return function (cb) {
 
+            // Run optimizer
             return plugins.rjs.optimize({
                 baseUrl: 'src',
                 mainConfigFile: config.paths.assets + 'js/main.js',
+                optimizeAllPluginResources: true,
                 out: config.paths.dist + 'assets/js/main-' + config.timestamp + '.min.js',
+                findNestedDependencies: true,
+                insertRequire: ['assets/js/main'],
+                wrap: true,
+                generateSourceMaps: true,
+                preserveLicenseComments: false,
                 optimize: 'uglify',
                 uglify: {
                     output: {
-                        beautify: false,
-                        quote_style: 1
+                        beautify: false
                     },
                     compress: {
-                        drop_debugger: true,
-                        drop_console: true
+                        sequences: false
                     },
+                    warnings: true,
+                    mangle: false,
                     'screw-ie8': true
                 },
                 include: ['assets/js/main'],

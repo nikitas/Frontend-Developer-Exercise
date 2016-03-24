@@ -26,7 +26,9 @@
         paths: {
             'angular': '../bower_components/angular/angular',
             'angular-route': '../bower_components/angular-route/angular-route',
-            'angularAMD': '../bower_components/angularAMD/angularAMD'
+            'angularAMD': '../bower_components/angularAMD/angularAMD',
+            'HomeCtrl': 'app/components/home/home.controller',
+            'DriversCtrl': 'app/components/drivers/drivers.controller'
         },
         shim: {
             'angularAMD': ['angular'],

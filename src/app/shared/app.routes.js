@@ -32,13 +32,13 @@ define(['angularAMD', 'angular-route'], function (angularAMD) {
             $routeProvider
                 .when('/', angularAMD.route({
                     templateUrl: 'app/components/home/home.tmpl.html',
-                    controller: 'HomeCtrl',
-                    controllerUrl: 'app/components/home/home.controller.js'
+                    controller: 'HomeCtrl'/*,
+                    controllerUrl: 'app/components/home/home.controller.js'*/
                 }))
                 .when('/drivers/:year?', angularAMD.route({
                     templateUrl: 'app/components/drivers/drivers.tmpl.html',
-                    controller: 'DriversCtrl',
-                    controllerUrl: 'app/components/drivers/drivers.controller.js'
+                    controller: 'DriversCtrl'/*,
+                    controllerUrl: 'app/components/drivers/drivers.controller.js'*/
                 }))
                 .otherwise({redirectTo: '/'});
 

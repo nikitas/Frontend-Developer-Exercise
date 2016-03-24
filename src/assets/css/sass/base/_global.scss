@@ -8,12 +8,48 @@
 ***********************************************************************/
 
 // Main background image
+// The image is loaded directly because sprite generator will produce
+// extremely large sprite image (no configuration options was able to reduce it)
 body {
-    background: $white url($imagesPath + 'demo/447756.jpg') no-repeat center fixed;
+    background: $white url($imagesPath + 'backgrounds/447756.jpg') no-repeat center fixed;
     opacity: 0.85;
 }
 
 // Over ride some of the Foundation default styles
 .gecko-bottom-menu.menu.simple a {
     padding: 0.7rem 1rem;
+}
+
+// Loader
+.loader {
+    position: relative;
+
+    &:before {
+        content: "";
+        border: 6px solid #333;
+        border-radius: 30px;
+        height: 50px;
+        left: 50%;
+        margin: -15px 0 0 -15px;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        width: 50px;
+        z-index: 0;
+        @include animation(loader 1s infinite ease-out);
+    }
+
+    @keyframes loader {
+        0% {
+            @include transform(scale(.1));
+            opacity: 0.0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            @include transform(scale(1.2));
+            opacity: 0;
+        }
+    }
 }

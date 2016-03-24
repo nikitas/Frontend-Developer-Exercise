@@ -9,4 +9,16 @@
 
 main {
     background-color: $white;
+
+    // Main wrapper for content
+    .blog-post {
+        position: relative;
+        min-height: 200px;
+
+        // Angular view
+        section {
+            position: relative;
+            background-color: $white;
+        }
+    }
 }

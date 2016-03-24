@@ -37,7 +37,7 @@
                 },
                 retinaSrcFilter: [
                     config.paths.assets + 'img/sprite/**/*@2x.png',
-                    config.paths.assets + 'img/sprite/**/*@2x.jpg'
+                    config.paths.assets + 'img/sprite/!**/!*@2x.jpg'
                 ],
                 retinaImgName: 'sprite@2x.png'
             }));
