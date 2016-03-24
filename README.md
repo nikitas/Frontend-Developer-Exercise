@@ -24,7 +24,7 @@ Every resources in distribution folder are optimized for maximum performance. Al
  As for the graphic elements, they are progressively optimized before delivery to distribution folder.
 
 ## UI/UX
-For the visual part, the Foundation framework has been used. Around 99% of styles are what Foundation is providing out of the box.
+For the visual part, the Foundation framework has been used in conjunction with lightweight mixin library for SASS called Bourbon. Around 99% of styles are what Foundation is providing out of the box.
 
 ## Unit tests
 Currently only one example test has been written, but soon we should have full test coverage for all methods using Karma, Jasmine and PhantomJS environment.
