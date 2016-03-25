@@ -45,7 +45,6 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-spec-reporter": "0.0.24",
     "lodash": "^4.3.0",
-    "phantomjs-prebuilt": "^2.1.6",
     "requirejs": "^2.2.0",
     "run-sequence": "^1.1.5",
     "spritesmith": "^3.1.0",
