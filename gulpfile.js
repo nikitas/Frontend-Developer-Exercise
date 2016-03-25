@@ -46,10 +46,11 @@
     // Load tasks
     gulp.task('jshint', getTask('jshint'));
     gulp.task('tests', getTask('tests'));
-    gulp.task('clean', ['jshint'], getTask('clean'));
+    gulp.task('clean', ['jshint'/*, 'tests'*/], getTask('clean'));
     gulp.task('sprite', getTask('sprite'));
     gulp.task('icons', getTask('icon-fonts'));
-    gulp.task('bower', getTask('bower'));
+    gulp.task('jade', getTask('jade'));
+    gulp.task('bower', ['jade'], getTask('bower'));
     gulp.task('inject', ['bower'], getTask('inject'));
     gulp.task('sass', ['sprite', 'icons', 'inject'], getTask('sass'));
     gulp.task('validateCSS', ['sass'], getTask('validate-css'));
@@ -63,6 +64,7 @@
     // Default build task
     gulp.task('build', ['clean'], function (callback) {
         plugins.runSequence(
+            'jade',
             'validateCSS',
             ['validateHTML', 'images'],
             callback

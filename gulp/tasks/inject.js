@@ -34,7 +34,10 @@
             ]).pipe(plugins.inject(
                 gulp.src([
                     config.paths.assets + 'css/*.css',
-                    config.paths.src + 'app/**/*.scss'
+                    config.paths.src + 'app/**/*.scss',
+                    config.paths.assets + 'vendors/**/*.scss',
+                    config.paths.assets + '**/*.js',
+                    '!' + config.paths.assets + 'js/main.js',
                 ], {read: false}),
                 {
                     relative: true

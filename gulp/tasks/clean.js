@@ -50,7 +50,7 @@
                 config.paths.assets + 'img/sprite.png',
                 config.paths.assets + 'img/sprite@2x.png',
                 config.paths.assets + 'fonts/*',
-                config.paths.src + 'iconfont.html',
+                config.paths.src + '**/*.html',
                 config.paths.dist + '*'
             ], {
                 read: false

@@ -1,0 +1,21 @@
+doctype html
+//
+    _ ____            _            _____       _       _   _
+    / ____|          | |          / ____|     | |     | | (_)
+    | |  __  ___  ___| | _____   | (___   ___ | |_   _| |_ _  ___  _ __  ___
+    | | |_ |/ _ \/ __| |/ / _ \   \___ \ / _ \| | | | | __| |/ _ \| '_ \/ __|
+    | |__| |  __/ (__|   < (_) |  ____) | (_) | | |_| | |_| | (_) | | | \__ \
+    \_____|\___|\___|_|\_\___/  |_____/ \___/|_|\__,_|\__|_|\___/|_| |_|___/
+
+html(lang="en")
+    block head
+        include blocks/head.jade
+    body
+        block header
+            include blocks/header.jade
+        block content
+            include blocks/content.jade
+        block footer
+            include blocks/footer.jade
+        block js
+            include blocks/js.jade
