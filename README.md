@@ -1,5 +1,7 @@
 # Frontend Developer Exercise 2.7
 
+[![Build Status](https://travis-ci.org/Bane-Maksin/Frontend-Developer-Exercise.svg?branch=master)](https://travis-ci.org/Bane-Maksin/Frontend-Developer-Exercise)
+
 ## Description
 
 For the purpose of this exercise, I have used Gulp modules as tasks runner and bower module for external dependency package management.
