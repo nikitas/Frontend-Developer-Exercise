@@ -50,7 +50,8 @@
     gulp.task('sprite', getTask('sprite'));
     gulp.task('icons', getTask('icon-fonts'));
     gulp.task('jade', getTask('jade'));
-    gulp.task('bower', ['jade'], getTask('bower'));
+    gulp.task('prettify', ['jade'], getTask('prettify'));
+    gulp.task('bower', ['prettify'], getTask('bower'));
     gulp.task('inject', ['bower'], getTask('inject'));
     gulp.task('sass', ['sprite', 'icons', 'inject'], getTask('sass'));
     gulp.task('validateCSS', ['sass'], getTask('validate-css'));
@@ -64,7 +65,6 @@
     // Default build task
     gulp.task('build', ['clean'], function (callback) {
         plugins.runSequence(
-            'jade',
             'validateCSS',
             ['validateHTML', 'images'],
             callback

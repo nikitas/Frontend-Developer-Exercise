@@ -1,5 +1,5 @@
 /**********************************************************************
- Stream to compile Jade templates
+ Stream to prettify resources
 
  Author: Branislav Maksin, bane@maksin.net
  Date: 22.3.2016
@@ -16,7 +16,7 @@
     'use strict';
 
     /**
-     * Compile Jade templates
+     * Prettify resources
      *
      * @param gulp {Object} Main Gulp object
      * @param plugins {Object} All installed plugins
@@ -26,16 +26,12 @@
     m.exports = function (gulp, plugins, config) {
         return function () {
             return gulp.src([
-                config.paths.src + '**/*.jade',
-                '!' + config.paths.src + 'jade/blocks/*.jade'
-                ])
-                .pipe(plugins.jade({
-                    pretty: true
-                }))
-                .pipe(plugins.rename(function (path) {
-                    if (path.basename === 'index' && path.dirname === 'jade') {
-                        path.dirname = '.';
-                    }
+                config.paths.src + '**/*.html',
+                '!' + config.paths.assets + 'vendors/**/*.html',
+                '!' + config.paths.assets + 'templates/iconfont.html',
+            ])
+                .pipe(plugins.prettify({
+                    indent_size: 4
                 }))
                 .pipe(gulp.dest(config.paths.src));
         };
