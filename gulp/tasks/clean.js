@@ -51,6 +51,7 @@
                 config.paths.assets + 'img/sprite@2x.png',
                 config.paths.assets + 'fonts/*',
                 config.paths.src + '**/*.html',
+                '!' + config.paths.assets + 'templates/iconfont.html',
                 config.paths.dist + '*'
             ], {
                 read: false

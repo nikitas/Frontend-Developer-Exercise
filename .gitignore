@@ -6,3 +6,6 @@
 /src/assets/img/sprite@2x.png
 /npm-debug.log
 !.gitkeep
+/src/app/**/*.html
+/src/*.html
+!/src/assets/templates/iconfont.html
