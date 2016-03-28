@@ -17,7 +17,7 @@ During the build process (and also when the watch task is active) newly created 
 ## Graphic elements
 Every graphic elements are automatically created for later include into the project build.
 
-	- Font icons are automatically created with preview directly from SVG files, and SASS mixins support and with new wof2 web font format
+	- Font icons are automatically created with preview directly from SVG files, with SASS mixins support and with new woff2 web font format
 	- CSS sprites are also automatically created with full retina and SASS mixins support
 
 ## Optimization
@@ -28,5 +28,5 @@ Every resources in distribution folder are optimized for maximum performance. Al
 ## UI/UX
 For the visual part, the Foundation framework has been used in conjunction with lightweight mixin library for SASS called Bourbon. Around 99% of styles are what Foundation is providing out of the box.
 
-## Unit tests
+## TODO: Unit tests
 Currently only one example test has been written, but soon we should have full test coverage for all methods using Karma, Jasmine and PhantomJS environment.
