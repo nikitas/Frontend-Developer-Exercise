@@ -28,6 +28,10 @@ define(['angularAMD', 'angular-route'], function (angularAMD) {
          */
         .config(function ($routeProvider, $locationProvider) {
 
+            // Before everything we need to get our controllers,
+            // because they will got lost when we use r.js optimizer
+            require(['HomeCtrl', 'DriversCtrl']);
+
             // Set routing for default and drivers views
             $routeProvider
                 .when('/', angularAMD.route({

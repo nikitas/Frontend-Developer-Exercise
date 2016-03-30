@@ -11,10 +11,6 @@
 define(['angularAMD', 'angular-route', 'app/shared/app.routes'], function (angularAMD) {
     'use strict';
 
-    // Before everything we need to get our controllers,
-    // because they will got lost when we use r.js optimizer
-    require(['HomeCtrl', 'DriversCtrl']);
-
     /**
      * @ngdoc module
      * @name angular.module
